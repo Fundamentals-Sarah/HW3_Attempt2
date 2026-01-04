@@ -1,0 +1,28 @@
+---
+title: "R Notebook"
+output:
+---
+
+maternalmortality <- read.csv("Maternalmortalityratio.csv")
+lifebirth <- read.csv("Lifeexpectancyatbirth.csv")
+infantmort <- read.csv("Infantmortalityrate.csv")
+str(maternalmortality)
+head(maternalmortality)
+tail(maternalmortality)
+names(maternalmortality)
+as.list(maternalmortality)
+data_subset <- maternalmortality[, c("name", "deaths.100", "ranking")]
+str(data_subset)
+names(data_subset)[3]<- "Region"
+names(data_subset)[2]<- "Deaths/100,000 Live Births"
+names(data_subset)[1]<- "Country Name"
+str(data_subset)
+saveRDS(data_subset,"maternalmortality.RDS")
+
+maternalmortalityRDS=readRDS("maternalmortality.RDS")
+str(maternalmortalityRDS)
+
+write.csv(data_subset,"maternal_formatted2.csv", row.names=FALSE)
+maternalmortalityCSV=read.csv("maternal_formatted2.csv")
+str(maternalmortalityCSV)
+
