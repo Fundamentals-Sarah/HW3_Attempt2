@@ -12,7 +12,6 @@ tail(maternalmortality)
 names(maternalmortality)
 as.list(maternalmortality)
 data_subset <- maternalmortality[, c("name", "deaths.100", "ranking")]
-str(data_subset)
 names(data_subset)[3]<- "Region"
 names(data_subset)[2]<- "Deaths/100,000 Live Births"
 names(data_subset)[1]<- "Country Name"
@@ -26,3 +25,44 @@ write.csv(data_subset,"maternal_formatted2.csv", row.names=FALSE)
 maternalmortalityCSV=read.csv("maternal_formatted2.csv")
 str(maternalmortalityCSV)
 
+str(lifebirth)
+head(lifebirth)
+tail(lifebirth)
+names(lifebirth)
+subset_lifebirth <- lifebirth[, c("name", "years", "region")]
+str(subset_lifebirth)
+names(subset_lifebirth)[1]<- "Country Name"
+names(subset_lifebirth)[2]<- "Life Expectancy at Birth"
+names(subset_lifebirth)[3]<- "Region"
+head(subset_lifebirth)
+head(subset_lifebirth)
+
+saveRDS(subset_lifebirth,"LifeExpectancyatBirth.RDS")
+
+LifeExpectancyatBirthRDS=readRDS("LifeExpectancyatBirth.RDS")
+str(LifeExpectancyatBirthRDS)
+
+write.csv(subset_lifebirth,"lifebirth_formatted2.csv", row.names=FALSE)
+LifeExpectancyatBirthCSV=read.csv("lifebirth_formatted2.csv")
+str(LifeExpectancyatBirthCSV)
+
+str(infantmort)
+head(infantmort)
+tail(infantmort)
+names(infantmort)
+subset_infantmort <- infantmort[, c("name", "deaths.1", "ranking")]
+str(subset_infantmort)
+names(subset_infantmort)[1]<- "Country Name"
+names(subset_infantmort)[2]<- "Infant Mortality Per 1,000 Live Births"
+names(subset_infantmort)[3]<- "Region"
+head(subset_infantmort)
+head(subset_infantmort)
+
+saveRDS(subset_infantmort,"InfantMortality.RDS")
+
+InfantMortalityRDS=readRDS("InfantMortality.RDS")
+str(InfantMortalityRDS)
+
+write.csv(subset_infantmort,"infantmortality_formatted2.csv", row.names=FALSE)
+InfantMortalityCSV=read.csv("infantmortality_formatted2.csv")
+str(InfantMortalityCSV)
